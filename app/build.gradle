@@ -31,6 +31,9 @@ dependencies {
     //butterknife
     compile "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
 
+    //picasso
+    compile "com.squareup.picasso:picasso:$rootProject.picassoVersion"
+
     //test
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

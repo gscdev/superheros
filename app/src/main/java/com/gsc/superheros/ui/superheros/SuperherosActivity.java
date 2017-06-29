@@ -5,15 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 
 import com.gsc.superheros.R;
+import com.gsc.superheros.model.Superhero;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class SuperHerosActivity extends AppCompatActivity  {
+public class SuperherosActivity extends AppCompatActivity implements SuperheroView {
 
     @BindView(R.id.superheros_list)
-    RecyclerView superherosList;
+    RecyclerView recyclerSuperheros;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,4 +24,13 @@ public class SuperHerosActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_superheros);
         ButterKnife.bind(this);
     }
+
+    //region SuperheroView
+
+    @Override
+    public void setSuperheros(List<Superhero> superheros) {
+        recyclerSuperheros.setAdapter(new SuperheroRecyclerViewAdapter(superheros));
+    }
+
+    //endregion
 }
