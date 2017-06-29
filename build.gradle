@@ -18,6 +18,11 @@ allprojects {
     }
 }
 
+ext {
+    supportVersion = '25.2.0'
+    butterknifeVersion = '8.6.0'
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
