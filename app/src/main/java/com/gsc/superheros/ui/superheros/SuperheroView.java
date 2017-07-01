@@ -9,4 +9,8 @@ interface SuperheroView {
     void setSuperheros(List<Superhero> superheroList);
 
     void navigateToDetail(Superhero superhero);
+
+    void showProgress();
+
+    void hideProgress();
 }

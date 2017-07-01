@@ -18,6 +18,7 @@ class SuperheroPresenter extends BasePresenter<SuperheroView> implements GetSupe
     }
 
     public void create() {
+        getView().showProgress();
         getSuperherosUseCase.getSuperheros(this);
     }
 
@@ -32,13 +33,16 @@ class SuperheroPresenter extends BasePresenter<SuperheroView> implements GetSupe
         this.superheros = superheros;
 
         if (getView() != null) {
+            getView().hideProgress();
             getView().setSuperheros(superheros);
         }
     }
 
     @Override
     public void onErrorGetSuperheros() {
-        // TODO: 30/06/2017  onErrorGetSuperheros
+        if (getView() != null) {
+            getView().hideProgress();
+        }
     }
 
     //endregion
