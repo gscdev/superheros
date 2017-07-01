@@ -24,6 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/superhero_image"
             android:gravity="center"
+            android:background="@drawable/name_background"
+            android:textColor="@android:color/white"
             tools:text="nombre"/>
     </RelativeLayout>
 
