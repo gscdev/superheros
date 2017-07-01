@@ -45,11 +45,23 @@ public class SuperheroDetailActivity extends AppCompatActivity implements Superh
         setContentView(R.layout.activity_superhero_detail);
         ButterKnife.bind(this);
 
+        setupActionBar(((Superhero) getIntent().getParcelableExtra(ARG_SUPERHERO)).getName());
         setupUi(getIntent().getParcelableExtra(ARG_SUPERHERO));
 
         presenter = new SuperheroDetailPresenter();
         presenter.setView(this);
         presenter.create();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    private void setupActionBar(String title) {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(title);
     }
 
     private void setupUi(Superhero superhero) {
