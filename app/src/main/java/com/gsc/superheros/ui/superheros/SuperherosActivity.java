@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.gsc.superheros.R;
 import com.gsc.superheros.model.Superhero;
@@ -21,6 +22,8 @@ public class SuperherosActivity extends AppCompatActivity implements SuperheroVi
 
     @BindView(R.id.superheros_list)
     RecyclerView recyclerSuperheros;
+    @BindView(R.id.progress_bar)
+    View progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,16 @@ public class SuperherosActivity extends AppCompatActivity implements SuperheroVi
     @Override
     public void navigateToDetail(Superhero superhero) {
         SuperheroDetailActivity.open(this, superhero);
+    }
+
+    @Override
+    public void showProgress() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        progressBar.setVisibility(View.GONE);
     }
 
     //endregion
