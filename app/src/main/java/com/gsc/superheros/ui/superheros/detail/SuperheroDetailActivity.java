@@ -3,7 +3,10 @@ package com.gsc.superheros.ui.superheros.detail;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +23,12 @@ public class SuperheroDetailActivity extends AppCompatActivity implements Superh
 
     private SuperheroDetailPresenter presenter;
 
+    @BindView(R.id.superhero_detail_appbar)
+    AppBarLayout appbar;
+    @BindView(R.id.superhero_detail_collapsing)
+    CollapsingToolbarLayout collapsingToolbar;
+    @BindView(R.id.superhero_detail_toolbar)
+    Toolbar toolbar;
     @BindView(R.id.superhero_detail_image)
     ImageView image;
     @BindView(R.id.superhero_detail_real_name)
@@ -45,26 +54,30 @@ public class SuperheroDetailActivity extends AppCompatActivity implements Superh
         setContentView(R.layout.activity_superhero_detail);
         ButterKnife.bind(this);
 
-        setupActionBar(((Superhero) getIntent().getParcelableExtra(ARG_SUPERHERO)).getName());
-        setupUi(getIntent().getParcelableExtra(ARG_SUPERHERO));
+        setupActionBar();
 
         presenter = new SuperheroDetailPresenter();
         presenter.setView(this);
-        presenter.create();
+        presenter.create(getIntent().getParcelableExtra(ARG_SUPERHERO));
+    }
+
+    private void setupActionBar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setNavigationOnClickListener(view -> onBackPressed());
+    }
+
+    //region SuperheroDetailView
+
+    @Override
+    public void setToolbarTitle(String title) {
+        toolbar.setTitle(title);
+        collapsingToolbar.setTitle(title);
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
-
-    private void setupActionBar(String title) {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(title);
-    }
-
-    private void setupUi(Superhero superhero) {
+    public void setSuperheroInfo(Superhero superhero) {
         Picasso.with(this).load(superhero.getPhoto()).into(image);
         realName.setText(superhero.getRealName());
         height.setText(superhero.getHeight());
@@ -72,4 +85,6 @@ public class SuperheroDetailActivity extends AppCompatActivity implements Superh
         abilities.setText(superhero.getAbilities());
         groups.setText(superhero.getGroups());
     }
+
+    //endregion
 }
