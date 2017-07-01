@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Superheros</string>
+
+    <string name="superhero_real_name">Real name:\u0020</string>
+    <string name="superhero_height">Height:\u0020</string>
+    <string name="superhero_power">Power</string>
+    <string name="superhero_abilities">Abilities</string>
+    <string name="superhero_groups">Groups</string>
+
 </resources>

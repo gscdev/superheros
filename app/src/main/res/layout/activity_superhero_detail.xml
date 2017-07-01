@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:orientation="vertical"
+    tools:context="com.gsc.superheros.ui.superheros.detail.SuperheroDetailActivity">
+
+    <ImageView
+        android:id="@+id/superhero_detail_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"/>
+
+    <!-- Real name -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/superhero_real_name"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/superhero_detail_real_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Peter Parker"/>
+    </LinearLayout>
+
+    <!-- Height -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/superhero_height"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/superhero_detail_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1.77m"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/superhero_power"
+        style="@style/detail_label"/>
+
+    <TextView
+        android:id="@+id/superhero_detail_power"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/superhero_abilities"
+        style="@style/detail_label"/>
+
+    <TextView
+        android:id="@+id/superhero_detail_abilities"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/superhero_groups"
+        style="@style/detail_label"/>
+
+    <TextView
+        android:id="@+id/superhero_detail_groups"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
