@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.gsc.superheros.R;
 import com.gsc.superheros.model.Superhero;
+import com.gsc.superheros.ui.base.OnBaseListListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -20,9 +21,11 @@ import butterknife.ButterKnife;
 class SuperheroRecyclerViewAdapter extends RecyclerView.Adapter<SuperheroRecyclerViewAdapter.ViewHolder> {
 
     private List<Superhero> superheros;
+    private OnBaseListListener listener;
 
-    public SuperheroRecyclerViewAdapter(List<Superhero> superheros) {
+    public SuperheroRecyclerViewAdapter(List<Superhero> superheros, OnBaseListListener listener) {
         this.superheros = superheros;
+        this.listener = listener;
     }
 
     @Override
@@ -37,6 +40,12 @@ class SuperheroRecyclerViewAdapter extends RecyclerView.Adapter<SuperheroRecycle
         final Superhero superhero = superheros.get(position);
         Picasso.with(holder.image.getContext()).load(superhero.getPhoto()).into(holder.image);
         holder.name.setText(superhero.getName());
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(position);
+            }
+        });
     }
 
     @Override

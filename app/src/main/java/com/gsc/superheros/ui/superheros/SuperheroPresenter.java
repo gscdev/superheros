@@ -10,6 +10,9 @@ class SuperheroPresenter extends BasePresenter<SuperheroView> implements GetSupe
 
     private GetSuperherosUseCase getSuperherosUseCase;
 
+    private List<Superhero> superheros;
+
+
     public SuperheroPresenter() {
         getSuperherosUseCase = new GetSuperherosUseCase();
     }
@@ -18,10 +21,16 @@ class SuperheroPresenter extends BasePresenter<SuperheroView> implements GetSupe
         getSuperherosUseCase.getSuperheros(this);
     }
 
+    public void onSuperheroSelected(int position) {
+        getView().navigateToDetail(superheros.get(position));
+    }
+
     //region GetSuperherosUseCase.Callback
 
     @Override
     public void onSuccessGetSuperheros(List<Superhero> superheros) {
+        this.superheros = superheros;
+
         if (getView() != null) {
             getView().setSuperheros(superheros);
         }

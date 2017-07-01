@@ -7,4 +7,6 @@ import java.util.List;
 interface SuperheroView {
 
     void setSuperheros(List<Superhero> superheroList);
+
+    void navigateToDetail(Superhero superhero);
 }
